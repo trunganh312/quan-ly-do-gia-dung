@@ -6,21 +6,37 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 0;
-if (isset($_SESSION['customer_id']) && $quantity > 0) {
+$quantity = isset($_POST['quantity']) ? $_GET['quantity'] : 0;
+if (isset($_SESSION['customer_id']) && isset($_GET['product_id'])) {
     $customerId = $_SESSION['customer_id']; // Lấy customer_id từ session hoặc từ thông tin đăng nhập
 
     // Lấy product_id và quantity từ yêu cầu hoặc từ ô văn bản
     $productId = $_GET['product_id']; // Đảm bảo bạn có tên ô văn bản chứa product_id
     // Đảm bảo bạn có tên ô văn bản chứa quantity
+    $quantity = isset($_POST['quantity']) ? $_GET['quantity'] : 0;
+    $query = "SELECT * FROM cart WHERE customer_id = '$customerId' AND product_id = '$productId'";
+    $result = mysqli_query($conn, $query);
+    $numRows = mysqli_num_rows($result);
 
-    // Thực hiện truy vấn để thêm thông tin vào bảng cart
-    $query = "INSERT INTO cart (product_id, customer_id, quantity) VALUES ('$productId', '$customerId', '$quantity')";
-    // Thực hiện truy vấn và kiểm tra kết quả
-    if (mysqli_query($conn, $query)) {
-        echo "<script>alert('Đã thêm sản phẩm vào giỏ hàng.');</script>";
+    if ($numRows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $existingQuantity = $row['quantity'];
+        $newQuantity = $existingQuantity + $quantity;
+
+        $updateQuery = "UPDATE cart SET quantity = '$newQuantity' WHERE customer_id = '$customerId' AND product_id = '$productId'";
+        if (mysqli_query($conn, $updateQuery)) {
+            echo "";
+        } else {
+            echo "Lỗi khi cập nhật giỏ hàng: " . mysqli_error($conn);
+        }
     } else {
-        echo "Lỗi khi thêm sản phẩm vào giỏ hàng: " . mysqli_error($conn);
+        // Sản phẩm chưa tồn tại trong giỏ hàng, thêm sản phẩm mới
+        $insertQuery = "INSERT INTO cart (customer_id, product_id, quantity) VALUES ('$customerId', '$productId', '$quantity')";
+        if (mysqli_query($conn, $insertQuery)) {
+            echo "";
+        } else {
+            echo "Lỗi khi thêm sản phẩm vào giỏ hàng: " . mysqli_error($conn);
+        }
     }
 }
 ?>

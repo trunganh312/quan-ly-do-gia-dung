@@ -26,7 +26,8 @@
 
         <div style="display: flex; justify-content: center; padding: 20px; background-color: lightsalmon;">
             <div class="auth-form">
-                <form class="auth-form__container">
+                <form class="auth-form__container" method="post" action="xulydangkyuser.php
+                ">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">Đăng kí</h3>
                         <a href="login.php" class="auth-form__switch-btn"><span class="auth-form__switch-btn">Đăng
@@ -34,13 +35,27 @@
                     </div>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                            <input required type="text" class="auth-form__input" name="first_name"
+                                placeholder="First name">
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                            <input required type="text" class="auth-form__input" name="last_name"
+                                placeholder="Last name">
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu của bạn">
+                            <input required type="text" class="auth-form__input" name="phone" placeholder="Phone">
+                        </div>
+                        <div class="auth-form__group">
+                            <input required type="text" class="auth-form__input" name="email"
+                                placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input required type="password" class="auth-form__input" name="password"
+                                placeholder="Mật khẩu của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input required type="password" class="auth-form__input" name="retypePassword"
+                                placeholder="Nhập lại mật khẩu của bạn">
                         </div>
                     </div>
 
@@ -54,7 +69,7 @@
 
                     <div class="auth-form__controls">
                         <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG KÍ</button>
+                        <button class="btn btn--primary " type="submit">ĐĂNG KÍ</button>
                     </div>
                 </form>
 

@@ -25,10 +25,10 @@ if ($result->num_rows > 0) {
     $_SESSION['first_name'] = $row["first_name"];
     $_SESSION['last_name'] = $row["last_name"];
     $_SESSION['customer_id'] = $row["customer_id"];
+    $_SESSION['role'] = $row["role"];
     header("Location: index.php");
 } else {
     // Đăng nhập thất bại
-    echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu!');</script>";
 }
 
 // Đóng kết nối
@@ -45,7 +45,9 @@ $conn->close();
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link id="favico" rel="icon" type="image/png" href="https://bizweb.dktcdn.net/100/327/577/files/2.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -67,10 +69,13 @@ $conn->close();
                     </div>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $emailInput : "" ?>" class="auth-form__input" placeholder="Email của bạn">
+                            <input type="text" name="email"
+                                value="<?php echo isset($_POST['email']) ? $emailInput : "" ?>" class="auth-form__input"
+                                placeholder="Email của bạn">
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" name="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                            <input type="password" name="password" class="auth-form__input"
+                                placeholder="Mật khẩu của bạn">
                         </div>
                     </div>
 
