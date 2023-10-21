@@ -59,7 +59,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="product__content-price">
                     <div class="content-price--old">
-                        <?php echo $product['product_price'] + 10; ?><span class="vnd-class">₫</span>
+                        <?php echo $product['product_price'] + 50000; ?><span class="vnd-class">₫</span>
                     </div>
                     <div class="content-price--new">
                         <?php echo $product['product_price']; ?><span class="vnd-class">₫</span>
@@ -121,14 +121,7 @@ if ($result->num_rows > 0) {
 
 
                 </div>
-                <div class="product__content-info">
-                    <div class="content-info--title">Thông tin</div>
-                    <div class="content-info--body">
-                        <span class="content-info--text">
-                            <?php echo $product['description']; ?>
-                        </span>
-                    </div>
-                </div>
+
 
                 <div class="product__content-count">
                     <div class="content-count--title">Số lượng</div>
@@ -207,4 +200,3 @@ if ($result->num_rows > 0) {
 }
 
 // Đóng kết nối cơ sở dữ liệu
-$conn->close();

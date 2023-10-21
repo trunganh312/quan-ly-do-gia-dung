@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $first_name = isset($_SESSION['first_name']) ? $_SESSION['first_name'] : "";
 $last_name = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : "";
 $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "";
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : "";
 ?>
 <header class="header">
     <div class="grid wide fix-wide-on-tablet">
@@ -13,7 +14,7 @@ $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "";
         <nav class="header__navbar hide-on-mobile-tablet">
             <ul class="header__navbar-list">
                 <li class="header__navbar-item header__navber-item--has-link header__navbar-item--separate">
-                    Vào cửa hàng trên ứng dụng F8 Shop
+                    Vào cửa hàng trên ứng dụng Shop đồ gia dụng
                     <div class="header__qr">
                         <img src="assets/img/qr_code.png" alt="QR CODE" class="header__qr-img">
                         <div class="header__qr-apps">
@@ -72,9 +73,9 @@ $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "";
                     </div>
                 </li>
                 <li class="header__navbar-item">
-                    <a href="#" class="header__navbar-item-link">
+                    <a href="report.php" class="header__navbar-item-link">
                         <i class="header__navbar-icon far fa-question-circle"></i>
-                        Trợ giúp
+                        Phản hồi
                     </a>
                 </li>
                 <!-- <li class="header__navbar-item header__navbar-item--bold header__navbar-item--separate">Đăng kí</li>
@@ -92,7 +93,11 @@ $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "";
 
                     <ul class="header__navbar-user-menu" <?php echo $first_name === "" ? "style='display: none'" : '' ?>>
                         <li class="header__navbar-user-item"><a href="profile.php">Tài khoản của tôi</a></li>
-                        <li class="header__navbar-user-item"><a href="#">Địa chỉ của tôi</a></li>
+                        <?php
+                        if ($role == 1) {
+                            echo "<li class='header__navbar-user-item'><a href='admin.php'>Quản lý</a></li>";
+                        }
+                        ?>
                         <li class="header__navbar-user-item"><a href="donmua.php">Đơn mua</a></li>
                         <li class="header__navbar-user-item header__navbar-user-item--separate"><a href="dangxuat.php">Đăng
                                 xuất</a></li>
@@ -303,38 +308,7 @@ $customer_id = isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : "";
                     <i class="header__mobile-close-icon fas fa-times"></i>
                 </label>
             </div>
-            <ul class="header__mobile-nav--list">
-                <li>
-                    <a href="#" class="header__mobile-link">
-                        <i class="fas fa-home"></i>
-                        Trang chủ
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="header__mobile-link">
-                        <i class="fas fa-id-card"></i>
-                        Thông tin tài khoản
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="header__mobile-link">
-                        <i class="fas fa-box"></i>
-                        Quản lí đơn hàng
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="header__mobile-link">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Địa chỉ của tôi
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="header__mobile-link">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Đăng xuất
-                    </a>
-                </li>
-            </ul>
+
         </nav>
     </div>
 

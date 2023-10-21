@@ -1,6 +1,6 @@
 <?php
 // Kết nối cơ sở dữ liệu (đã được thiết lập trước đó)
-include_once "connection.php";
+include 'connection.php';
 
 // Lấy payment_id từ form
 $payment_id = $_GET['payment_id'];

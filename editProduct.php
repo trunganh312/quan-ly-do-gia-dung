@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create product</title>
+    <title>Sửa sản phẩm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
@@ -14,6 +14,7 @@
     <?php
     include 'connection.php';
     $product_id = $_GET['product_id'];
+    $manufacturer_id = $_GET['manufacturer_id'];
     $query = mysqli_query($conn, "SELECT * FROM products WHERE product_id=$product_id;");
     $row = mysqli_fetch_assoc($query);
     ?>
@@ -50,8 +51,15 @@
                 if (mysqli_num_rows($result) > 0) {
                     // Duyệt qua từng dòng kết quả
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<option value="' . $row["manufacturer_id"] . '">' . $row["manufacturer_name"] . '</option>';
+                ?>
+                        <option <?php echo  $manufacturer_id == $row['manufacturer_id'] ? 'selected' : ''; ?> value="<?php echo $row['manufacturer_id'] ?>"><?php echo $row['manufacturer_name'] ?>
+                        </option>
+                <?php
                     }
+                    echo "
+            </select>";
+                } else {
+                    echo "";
                 }
                 ?>
             </select>

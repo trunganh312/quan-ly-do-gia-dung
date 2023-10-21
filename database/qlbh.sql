@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 18, 2023 lúc 10:03 AM
+-- Thời gian đã tạo: Th10 21, 2023 lúc 04:23 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -50,11 +50,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category_name`) VALUES
-(1, 'Electronics'),
-(2, 'Clothing'),
 (3, 'Home Appliances'),
-(4, 'Books'),
-(5, 'Beauty');
+(4, 'Books1'),
+(6, 'đồ điện tử');
 
 -- --------------------------------------------------------
 
@@ -81,7 +79,7 @@ INSERT INTO `customers` (`customer_id`, `first_name`, `last_name`, `email`, `pho
 (3, 'Michael', 'Johnson', 'michaeljohnson@example.com', '5555555555', 'anhtrung', 2),
 (4, 'Emily', 'Davis', 'emilydavis@example.com', '1111111111', 'anhtrung', 2),
 (5, 'Samuel', 'Wilson', 'samuelwilson@example.com', '9999999999', 'anhtrung123', 2),
-(7, 'Admin', '1234', 'admin@gmail.com', '0353106446', 'admin', 1),
+(7, 'Admin', '1233', 'admin@gmail.com', '0353106446', 'admin', 1),
 (9, 'John1', 'ddddd', '1', '0353106446', '1', 2);
 
 -- --------------------------------------------------------
@@ -140,12 +138,17 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `manufacturer_id`, `image_url`) VALUES
-(1, 'Xoong nồi1', 'Description of Product 1', '10.99', 1, 'https://suno.vn/blog/wp-content/uploads/2020/06/boxme-kinh-doanh-hang-gia-dung-1250x800.jpg'),
-(2, 'Product 2', 'Description of Product 2', '19.99', 2, 'https://inoxfivestar.com/Uploads/Image/bo-noi-Cookever/bo-noi-cao-cap-cookever-DD.jpg'),
-(3, 'Product 3', 'Description of Product 3', '5.99', 1, 'https://gotrangtri.vn/wp-content/uploads/2018/04/phong-thuy-nha-o-1.png'),
-(4, 'Product 4', 'Description of Product 4', '15.99', 3, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Th%E1%BB%9Bt.jpg/300px-Th%E1%BB%9Bt.jpg'),
-(5, 'Product 5', 'Description of Product 5Description of Product 5Description of Product 5Description of Product 5Description of Product 5Description of Product 5Description of Product 5Description of Product 5', '8.99', 2, 'https://quatdien.com.vn/wp-content/uploads/2020/07/b400.jpg'),
-(9, 'product 3', '1', '1.00', 2, '1');
+(3, 'Product 33333', 'Description of Product 3', '6.00', 3, 'https://gotrangtri.vn/wp-content/uploads/2018/04/phong-thuy-nha-o-1.png'),
+(9, 'product 3', '1', '1.00', 2, '1'),
+(10, '1', '1', '1000000.00', 1, '1'),
+(11, 'product 31', 'àhassssssssssssssssssssssssssssssssssssss', '1000.00', 1, 'sssssssssssssssssssssssssssssssssssssssssssss'),
+(12, 'product 3', 'àhassssssssssssssssssssssssssssssssssssss', '1000.00', 3, 'sssssssssssssssssssssssssssssssssssssssssssss'),
+(13, 'product 31', 'àhassssssssssssssssssssssssssssssssssssss', '1000.00', 2, 'sssssssssssssssssssssssssssssssssssssssssssss'),
+(14, 'product 31', 'àhassssssssssssssssssssssssssssssssssssss', '1000.00', 2, 'sssssssssssssssssssssssssssssssssssssssssssss'),
+(15, 'Xoong nồi1', '1', '99999999.99', 3, 'sssssssssssssssssssssssssssssssssssssssssssss'),
+(16, 'product 3', '1', '1000.00', 1, 'sssssssssssssssssssssssssssssssssssssssssssss'),
+(19, 'product 31', '1', '99999999.99', 2, '1'),
+(20, 'product 31', 'àhassssssssssssssssssssssssssssssssssssss', '1000.00', 1, '1');
 
 -- --------------------------------------------------------
 
@@ -163,10 +166,27 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`product_id`, `category_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 1),
-(4, 4);
+(3, 6),
+(15, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `reports`
+--
+
+CREATE TABLE `reports` (
+  `report_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `report_content` text COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `reports`
+--
+
+INSERT INTO `reports` (`report_id`, `customer_id`, `report_content`) VALUES
+(1, 2, '111111111111111111111111111111111');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -177,8 +197,8 @@ INSERT INTO `product_categories` (`product_id`, `category_id`) VALUES
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `customer_id` (`customer_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD UNIQUE KEY `customer_id` (`customer_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
 --
 -- Chỉ mục cho bảng `categories`
@@ -204,9 +224,9 @@ ALTER TABLE `manufacturers`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`payment_id`),
-  ADD KEY `customer_id` (`customer_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `cart_id` (`cart_id`);
+  ADD UNIQUE KEY `cart_id` (`cart_id`),
+  ADD KEY `payments_ibfk_1` (`customer_id`),
+  ADD KEY `payments_ibfk_2` (`product_id`);
 
 --
 -- Chỉ mục cho bảng `products`
@@ -223,6 +243,13 @@ ALTER TABLE `product_categories`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Chỉ mục cho bảng `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`report_id`),
+  ADD KEY `reports_ibfk_1` (`customer_id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -230,19 +257,19 @@ ALTER TABLE `product_categories`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `manufacturers`
@@ -254,13 +281,19 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT cho bảng `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT cho bảng `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -270,29 +303,35 @@ ALTER TABLE `products`
 -- Các ràng buộc cho bảng `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `payments`
 --
 ALTER TABLE `payments`
-  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `payments_ibfk_3` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`);
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `payments_ibfk_3` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`manufacturer_id`);
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`manufacturer_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `product_categories`
 --
 ALTER TABLE `product_categories`
-  ADD CONSTRAINT `product_categories_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
-  ADD CONSTRAINT `product_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
+  ADD CONSTRAINT `product_categories_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `product_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

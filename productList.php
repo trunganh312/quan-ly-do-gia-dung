@@ -1,4 +1,13 @@
 <?php
+
+$recordsPerPage = 10;
+
+// Trang hiện tại
+$currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Tính toán vị trí bắt đầu
+$startIndex = ($currentpage - 1) * $recordsPerPage;
+
 include_once "connection.php";
 
 $categoryId = isset($_GET['categoryId']) ? $_GET['categoryId'] : '';
@@ -6,29 +15,31 @@ $search_keyword = isset($_GET['search']) ? $_GET['search'] : '';
 if (isset($_GET['sortByASC']) === true && $_GET['sortByASC'] === 'ASC') {
     $sql = "SELECT p.*, m.manufacturer_name
     FROM products p
-    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price ASC";
+    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price ASC LIMIT $startIndex, $recordsPerPage";
 } else if (isset($_GET['sortByDESC']) === true && $_GET['sortByDESC'] === 'DESC') {
     $sql = "SELECT p.*, m.manufacturer_name
     FROM products p
-    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price DESC";
+    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price DESC LIMIT $startIndex, $recordsPerPage";
 } else if (isset($_GET['categoryId']) === true && $_GET['categoryId'] !== '') {
     $sql = "SELECT p.*, m.manufacturer_name
         FROM products p
         JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id
         INNER JOIN product_categories pc ON p.product_id = pc.product_id
-        WHERE pc.category_id = '$categoryId'";
+        WHERE pc.category_id = '$categoryId' LIMIT $startIndex, $recordsPerPage";
 } else if (isset($_GET['search']) === true && $_GET['search'] !== '') {
     $sql = "SELECT p.*, m.manufacturer_name
     FROM products p
-    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id WHERE product_name LIKE '%$search_keyword%' ";
+    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id WHERE product_name LIKE '%$search_keyword%'LIMIT $startIndex, $recordsPerPage ";
 } else {
     $sql = "SELECT p.*, m.manufacturer_name
     FROM products p
-    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ";
+    JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id LIMIT $startIndex, $recordsPerPage ";
 }
 if ($sql !== null) {
     $result = $conn->query($sql);
 }
+
+
 
 // Kiểm tra và hiển thị dữ liệu
 if ($result->num_rows > 0) {
@@ -42,8 +53,8 @@ if ($result->num_rows > 0) {
                     <?php echo $row['product_name']; ?>
                 </h4>
                 <div class="home-product-item__price">
-                    <span class="home-product-item__price-old"><?php echo $row['price'] + 10; ?></span>
-                    <span class="home-product-item__price-current"><?php echo $row['price']; ?></span>
+                    <span class="home-product-item__price-old"><?php echo $row['price'] + 50000; ?>đ</span>
+                    <span class="home-product-item__price-current"><?php echo $row['price']; ?>đ</span>
                 </div>
 
                 <div class="home-product-item__origin">
@@ -60,6 +71,7 @@ if ($result->num_rows > 0) {
             </a>
         </div>
 <?php
+
     }
 } else {
     echo "<h1>Không có sản phẩm !!! </h1>";

@@ -2,16 +2,13 @@
 include 'connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lấy dữ liệu từ form
-    $product_name = $_POST['product_name'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    $manufacturer_id = $_POST['manufacturer_id'];
-    $image_url = $_POST['image_url'];
+    $category_name = $_POST['category_name'];
+
 
     // Thực hiện truy vấn INSERT để thêm sản phẩm vào cơ sở dữ liệu
 
-    $query = "INSERT INTO products ( product_name, description , price , manufacturer_id, image_url)
-              VALUES ('$product_name', '$description',  '$price', '$manufacturer_id', '$image_url')";
+    $query = "INSERT INTO categories ( category_name)
+              VALUES ('$category_name')";
     $result = mysqli_query($conn, $query);
 
 

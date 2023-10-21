@@ -45,14 +45,12 @@ $conn->close();
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link id="favico" rel="icon" type="image/png" href="https://bizweb.dktcdn.net/100/327/577/files/2.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="./js/app.js"></script>
-    <title>Login | F8 Shop </title>
+    <title>Login | Shop đồ gia dụng </title>
     <link href="assets/fonts/fontawesome-free-5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -69,13 +67,10 @@ $conn->close();
                     </div>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" name="email"
-                                value="<?php echo isset($_POST['email']) ? $emailInput : "" ?>" class="auth-form__input"
-                                placeholder="Email của bạn">
+                            <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $emailInput : "" ?>" class="auth-form__input" placeholder="Email của bạn">
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" name="password" class="auth-form__input"
-                                placeholder="Mật khẩu của bạn">
+                            <input type="password" name="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
                         </div>
                     </div>
 
@@ -92,7 +87,8 @@ $conn->close();
                     </div>
 
                     <div class="auth-form__controls">
-                        <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        <button class="btn btn--normal auth-form__controls-back"><a style="text-decoration: none; color: inherit" href="index.php">TRỞ
+                                LẠI</a></button>
                         <button class="btn btn--primary">ĐĂNG NHẬP</button>
                     </div>
                 </form>

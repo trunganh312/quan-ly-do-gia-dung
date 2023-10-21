@@ -1,6 +1,6 @@
 <?php
 // Kết nối cơ sở dữ liệu (đã được thiết lập trước đó)
-include_once "connection.php";
+include 'connection.php';
 
 // Lấy product_id từ form
 $product_id = $_GET['product_id'];

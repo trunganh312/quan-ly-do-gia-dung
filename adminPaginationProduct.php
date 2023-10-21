@@ -1,4 +1,4 @@
-<ul class="pagination pagination__home-product">
+<ul style="display: flex; justify-content: center; gap: 20px; align-items: center">
     <?php
     $recordsPerPage = 10;
 
@@ -25,10 +25,10 @@
     $pagination = '';
     for ($i = 1; $i <= $totalPages; $i++) {
         if ($i == $currentpage) {
-            $pagination .= "  <li class='pagination-item pagination-item--active'><a href='?page=$i' class='pagination-item__link'>$i</a></li>";
+            $pagination .= "  <li style='padding: 5px 10px; border-radius: 5px; background-color: orange; color: white'><a href='?page=$i' >$i</a></li>";
         } else {
-            $pagination .= "  <li class='pagination-item '>
-        <a href='?page=$i' class='pagination-item__link'>
+            $pagination .= "  <li style='padding: 5px 10px; border-radius: 5px; '>
+        <a href='?page=$i' >
             $i
         </a>
         </li>";

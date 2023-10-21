@@ -20,6 +20,13 @@
 
         </tr>
         <?php
+        $recordsPerPage = 10;
+
+        // Trang hiện tại
+        $currentpage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        // Tính toán vị trí bắt đầu
+        $startIndex = ($currentpage - 1) * $recordsPerPage;
         include 'connection.php';
         if (session_status() === PHP_SESSION_NONE) {
             // session_start();
@@ -28,19 +35,19 @@
         if (isset($_GET['sortByASC']) === true && $_GET['sortByASC'] === 'ASC') {
             $query = "SELECT p.*, m.manufacturer_name
             FROM products p
-            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price ASC";
+            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price ASC LIMIT $startIndex, $recordsPerPage";
         } else if (isset($_GET['sortByDESC']) === true && $_GET['sortByDESC'] === 'DESC') {
             $query = "SELECT p.*, m.manufacturer_name
             FROM products p
-            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price DESC";
+            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ORDER BY price DESC LIMIT $startIndex, $recordsPerPage";
         } else if (isset($_GET['search']) === true && $_GET['search'] !== '') {
             $query = "SELECT p.*, m.manufacturer_name
             FROM products p
-            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id WHERE product_name LIKE '%$search_keyword%' ";
+            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id WHERE product_name LIKE '%$search_keyword%'LIMIT $startIndex, $recordsPerPage ";
         } else {
             $query = "SELECT p.*, m.manufacturer_name
             FROM products p
-            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id ";
+            JOIN manufacturers m ON p.manufacturer_id = m.manufacturer_id LIMIT $startIndex, $recordsPerPage ";
         }
 
         $result = mysqli_query($conn, $query);
@@ -54,7 +61,8 @@
                     <td> <?php echo $row["price"] ?></td>
                     <td> <?php echo $row["manufacturer_name"] ?></td>
                     <td> <?php echo $row["image_url"] ?></td>
-                    <td><a href="editProduct.php?product_id=<?php echo $row['product_id']; ?>">Edit</a></td>
+                    <td><a href="editProduct.php?product_id=<?php echo $row['product_id']; ?>&manufacturer_id=<?php echo $row['manufacturer_id']; ?>">Edit</a>
+                    </td>
                     <td><a href="xulyxoasanpham.php?product_id=<?php echo $row['product_id']; ?>">Delete</a></td>
                 </tr>
 
@@ -65,6 +73,9 @@
         }
         ?>
     </table>
+    <div class="pagination" style="margin-top: 20px;margin-bottom: 20px">
+        <?php include 'adminPaginationProduct.php'; ?>
+    </div>
 </body>
 
 </html>

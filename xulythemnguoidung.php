@@ -1,5 +1,5 @@
 <?php
-include_once "connection.php";
+include 'connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lấy dữ liệu từ form
     $first_name = $_POST['first_name'];

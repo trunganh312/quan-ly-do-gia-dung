@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer | F8 shop</title>
+    <title>Customer | Shop đồ gia dụng</title>
 </head>
 
 <body>
@@ -34,14 +34,14 @@
             // Duyệt qua từng dòng kết quả
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
-        <tr>
-            <td> <?php echo $row["first_name"] . " " . $row["last_name"] ?></td>
-            <td> <?php echo $row["email"] ?></td>
-            <td> <?php echo $row["phone"] ?></td>
-            <td> <?php echo $row["password"] ?></td>
-            <td><a href="editCustomer.php?customer_id=<?php echo $row['customer_id']; ?>">Edit</a> </td>
-            <td> <a href="xulyxoanguoidung.php?customer_id=<?php echo $row['customer_id']; ?>">Delete</a></td>
-        </tr>
+                <tr>
+                    <td> <?php echo $row["first_name"] . " " . $row["last_name"] ?></td>
+                    <td> <?php echo $row["email"] ?></td>
+                    <td> <?php echo $row["phone"] ?></td>
+                    <td> <?php echo $row["password"] ?></td>
+                    <td><a href="editCustomer.php?customer_id=<?php echo $row['customer_id']; ?>">Edit</a> </td>
+                    <td> <a href="xulyxoanguoidung.php?customer_id=<?php echo $row['customer_id']; ?>">Delete</a></td>
+                </tr>
 
         <?php
             }
