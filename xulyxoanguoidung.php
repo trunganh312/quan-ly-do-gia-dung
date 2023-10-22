@@ -2,16 +2,15 @@
 // Kết nối cơ sở dữ liệu (đã được thiết lập trước đó)
 include 'connection.php';
 
-// Lấy product_id từ form
-$product_id = $_GET['product_id'];
+// Lấy customer_id từ form
+$customer_id = $_GET['customer_id'];
 
 // Thực hiện truy vấn DELETE để xóa sản phẩm khỏi cơ sở dữ liệu
-$query = "DELETE FROM products WHERE product_id = '$product_id'";
+$query = "DELETE FROM customers WHERE customer_id = '$customer_id'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
     // Sản phẩm đã được xóa thành công
-    echo "Product deleted successfully.";
     header("Location: admin.php");
 } else {
     // Xảy ra lỗi khi xóa sản phẩm

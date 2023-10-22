@@ -18,7 +18,9 @@
         <div class="mb-6">
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
                 product</label>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="product_id">
+            <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="product_id">
                 <option selected>Choose a product</option>
 
                 <?php
@@ -35,13 +37,14 @@
                     // Duyệt qua từng dòng kết quả
                     while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                        <option value="<?php echo $row['product_id'] ?>">
-                            <?php echo $row['product_name'] ?>
-                        </option>
+                <option value="<?php echo $row['product_id'] ?>">
+                    <?php echo $row['product_name'] ?>
+                </option>
 
                 <?php
                     }
                     echo "</select>";
+                   
                 } else {
                     echo "Không có người dùng nào nào";
                 }
@@ -49,28 +52,26 @@
         </div>
 
         <div class="mb-6">
-            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                an
                 category</label>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="category_id">
+            <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="category_id">
                 <option selected>Choose a category</option>
 
                 <?php
                 include 'connection.php';
-                if (session_status() === PHP_SESSION_NONE) {
-                    // session_start();
-                }
+                $query1 = "SELECT * FROM categories";
 
-
-                $query = "SELECT * FROM categories";
-
-                $result = mysqli_query($conn, $query);
-                if (mysqli_num_rows($result) > 0) {
+                $result1 = mysqli_query($conn, $query1);
+                if (mysqli_num_rows($result1) > 0) {
                     // Duyệt qua từng dòng kết quả
-                    while ($row = mysqli_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($result1)) {
                 ?>
-                        <option value="<?php echo $row['category_id'] ?>">
-                            <?php echo $row['category_name'] ?>
-                        </option>
+                <option value="<?php echo $row['category_id'] ?>">
+                    <?php echo $row['category_name'] ?>
+                </option>
 
                 <?php
                     }
@@ -80,7 +81,8 @@
                 }
                 ?>
         </div>
-        <button type="submit" name="submit" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none mt-4 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Thêm
+        <button type="submit" name="submit"
+            class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none mt-4 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Thêm
             danh mục - sản phẩm</button>
     </form>
 </body>
