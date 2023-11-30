@@ -9,11 +9,10 @@
 </head>
 
 <body>
-    <table id="customers">
+    <table id="customers" style="margin-top: 20px">
         <tr>
-            <th style="min-width: 200px;">Sản phẩm</th>
-            <th style="min-width: 100px;">Danh mục</th>
-            <th style="min-width: 100px;">Thao tác</th>
+            <th style="min-width: 200px;">Tên người phản hồi</th>
+            <th style="min-width: 100px;">Nội dung</th>
         </tr>
         <?php
         include 'connection.php';
@@ -22,10 +21,9 @@
         }
 
 
-        $query = "SELECT pc.*, p.product_name, c.category_name 
-        FROM products p 
-        INNER JOIN product_categories pc ON p.product_id = pc.product_id 
-        JOIN categories c ON c.category_id = pc.category_id";
+        $query = "SELECT rp.*, c.first_name, c.last_name
+        FROM customers c 
+        INNER JOIN reports rp ON c.customer_id = rp.customer_id";
 
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
@@ -33,12 +31,8 @@
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
         <tr>
-            <td> <?php echo $row["product_name"] ?></td>
-            <td> <?php echo $row["category_name"] ?></td>
-            <td><a
-                    href="editProductCategory.php?product_id=<?php echo $row['product_id']; ?>&category_id=<?php echo $row['category_id']; ?>">Edit</a>
-            </td>
-
+            <td> <?php echo $row["first_name"]. " ". $row["last_name"]; ?></td>
+            <td> <?php echo $row["report_content"]?></td>
         </tr>
 
         <?php

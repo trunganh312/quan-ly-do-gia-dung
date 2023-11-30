@@ -241,7 +241,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : "";
                                         $product_id = $row["product_id"];
                                         $quantity = $row["quantity"];
                                         $cart_id = $row["cart_id"];
-
+                                       
                                         // Lấy thông tin sản phẩm từ bảng "product" dựa trên product_id
                                         $product_sql = "SELECT * FROM products WHERE product_id = '$product_id'";
                                         $product_result = $conn->query($product_sql);
@@ -249,6 +249,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : "";
                                         if ($product_result->num_rows > 0) {
                                             // Duyệt qua các hàng kết quả
                                             while ($product_row = $product_result->fetch_assoc()) {
+                                               
                             ?>
                             <li class="header__cart-item">
                                 <img src="<?php echo $product_row["image_url"] ?>" alt="Bộ kem sáng da mềm mịn"

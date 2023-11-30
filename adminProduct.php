@@ -55,16 +55,19 @@
             // Duyệt qua từng dòng kết quả
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
-                <tr>
-                    <td> <?php echo $row["product_name"] ?></td>
-                    <td> <?php echo $row["description"] ?></td>
-                    <td> <?php echo $row["price"] ?></td>
-                    <td> <?php echo $row["manufacturer_name"] ?></td>
-                    <td> <?php echo $row["image_url"] ?></td>
-                    <td><a href="editProduct.php?product_id=<?php echo $row['product_id']; ?>&manufacturer_id=<?php echo $row['manufacturer_id']; ?>">Edit</a>
-                    </td>
-                    <td><a href="xulyxoasanpham.php?product_id=<?php echo $row['product_id']; ?>">Delete</a></td>
-                </tr>
+        <tr>
+            <td> <?php echo $row["product_name"] ?></td>
+            <td> <?php echo $row["description"] ?></td>
+            <td> <?php echo $row["price"] ?></td>
+            <td> <?php echo $row["manufacturer_name"] ?></td>
+            <td> <img style="
+                width: 500px;
+            " src="<?php echo $row["image_url"] ?>" alt=""></td>
+            <td><a
+                    href="editProduct.php?product_id=<?php echo $row['product_id']; ?>&manufacturer_id=<?php echo $row['manufacturer_id']; ?>">Edit</a>
+            </td>
+            <td><a href="xulyxoasanpham.php?product_id=<?php echo $row['product_id']; ?>">Delete</a></td>
+        </tr>
 
         <?php
             }

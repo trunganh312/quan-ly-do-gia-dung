@@ -22,11 +22,11 @@
         <div class="row" style="display: flex; justify-content: center;margin-bottom: 20px;">
             <div class="col t-4 m-6">
                 <div class="card">
-                    <img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/310276686_1153250915296573_3429463213593948890_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=QkTWJJizacwAX8eHTrO&_nc_ht=scontent.fhan14-2.fna&oh=00_AfA_qH22rPZt9vZhT7ERmj6SVhdHwegscinOqQIWveC_2g&oe=6537A060"
-                        alt="Avatar" style="width:100%">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:100%">
                     <div class="container">
                         <h2><b>Hoàng Trọng Trung</b></h2>
                         <h3>03/12/2002</h3>
+                        <h3>20103100083</h3>
                     </div>
                 </div>
             </div>
@@ -36,6 +36,7 @@
                     <div class="container">
                         <h2><b>Nguyễn Quốc Anh</b></h2>
                         <h3>03/10/2002</h3>
+                        <h3>20103100178</h3>
                     </div>
                 </div>
             </div>
@@ -45,6 +46,7 @@
                     <div class="container">
                         <h2><b>Nguyễn Trọng Mạnh</b></h2>
                         <h3>09/11/2002</h3>
+                        <h3>20103100499</h3>
                     </div>
                 </div>
             </div>
@@ -55,7 +57,7 @@
     <!-- Footer copyright -->
     <div class="footer__bottom">
         <div class="grid wide fix-wide-on-tablet">
-            <p class="footer__copyright-text">© 20213 - Bài tập lớn nhóm 4 - Bán đồ gia dụng</p>
+            <p class="footer__copyright-text">© 2023 - Bài tập lớn nhóm 4 - Bán đồ gia dụng</p>
         </div>
     </div>
 </footer>

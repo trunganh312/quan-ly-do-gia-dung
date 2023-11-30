@@ -3,7 +3,7 @@ include 'connection.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_SESSION["customer_id"])) {
     // Lấy dữ liệu từ form
     $customer_id =  $_SESSION['customer_id'];
     $report_content = $_POST['report_content'];
@@ -19,4 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Xảy ra lỗi khi thêm sản phẩm
         echo "Error adding product: " . mysqli_error($conn);
     }
+} else {
+    header("Location: report.php");
+
 }
