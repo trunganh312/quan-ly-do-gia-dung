@@ -33,8 +33,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
             <div class="main__sidebar">
                 <div class="main__user">
                     <div class="main__img">
-                        <img src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
-                            alt="" />
+                        <a href="index.php">
+                            <img src="https://inkythuatso.com/uploads/images/2021/12/logo-truong-dai-hoc-kinh-te-ky-thuat-cong-nghiep-inkythuatso-01-25-09-30-52.jpg"
+                                alt="" />
+                        </a>
                     </div>
                 </div>
 
