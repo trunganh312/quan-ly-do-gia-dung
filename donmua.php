@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link id="favico" rel="icon" type="image/png" href="https://bizweb.dktcdn.net/100/327/577/files/2.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -64,28 +66,30 @@
 
             ?>
 
-                                <div style="
+            <div style="
     display: <?php echo $quantity > 0 ? "flex" : "none" ?>;
     flex-direction: column;
 " class=" w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                    <a class="flex-1" href="product.php?product_id=<?php echo $product_id; ?>">
-                                        <img class="p-8 rounded-t-lg" src="<?php echo $product_row["image_url"] ?>" alt="product image" />
-                                    </a>
-                                    <div class="px-5 pb-5">
-                                        <a href="#">
-                                            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                                                <?php echo $product_row["product_name"] ?></h5>
-                                        </a>
+                <a class="flex-1" href="product.php?product_id=<?php echo $product_id; ?>">
+                    <img class="p-8 rounded-t-lg" src="<?php echo $product_row["image_url"] ?>" alt="product image" />
+                </a>
+                <div class="px-5 pb-5">
+                    <a href="#">
+                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                            <?php echo $product_row["product_name"] ?></h5>
+                    </a>
 
-                                        <div class="flex items-center justify-between mt-3">
-                                            <span class="text-3xl font-bold text-gray-900 dark:text-white"><?php echo $product_row["price"] * $quantity ?>$</span>
-                                            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Số
-                                                lượng: <?php echo $quantity ?></a>
+                    <div class="flex items-center justify-between mt-3">
+                        <span
+                            class="text-3xl font-bold text-gray-900 dark:text-white"><?php echo $product_row["price"] * $quantity ?>$</span>
+                        <a href="#"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Số
+                            lượng: <?php echo $quantity ?></a>
 
 
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+            </div>
             <?php
                             }
                         }
@@ -99,8 +103,16 @@
                 echo "Người dùng chưa đăng nhập";
             }
             ?>
+
         </div>
     </div>
+    <div style="
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+"> <a href="index.php"
+            class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-2xl px-10 py-7 mr-2 mb-2 dark:focus:ring-yellow-900">Quay
+            lại</a></div>
 </body>
 
 </html>

@@ -12,6 +12,8 @@
     <table id="customers" style="margin-top: 20px">
         <tr>
             <th style="min-width: 200px;">Tên người phản hồi</th>
+            <th style="min-width: 200px;">Sản phẩm phản hồi</th>
+            <th style="min-width: 200px;">Ảnh sản phẩm</th>
             <th style="min-width: 100px;">Nội dung</th>
         </tr>
         <?php
@@ -21,9 +23,10 @@
         }
 
 
-        $query = "SELECT rp.*, c.first_name, c.last_name
+        $query = "SELECT rp.*, c.first_name, c.last_name, p.product_name, p.image_url
         FROM customers c 
-        INNER JOIN reports rp ON c.customer_id = rp.customer_id";
+        INNER JOIN reports rp ON c.customer_id = rp.customer_id
+        JOIN products p ON p.product_id = rp.product_id";
 
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
@@ -32,6 +35,10 @@
         ?>
         <tr>
             <td> <?php echo $row["first_name"]. " ". $row["last_name"]; ?></td>
+            <td> <?php echo $row["product_name"]?></td>
+            <td> <img style="
+                width: 100px;
+            " src="<?php echo $row["image_url"] ?>" alt=""></td>
             <td> <?php echo $row["report_content"]?></td>
         </tr>
 

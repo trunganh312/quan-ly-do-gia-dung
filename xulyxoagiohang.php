@@ -10,7 +10,6 @@ $query = "DELETE FROM cart WHERE cart_id = '$cart_id'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
-    // Sản phẩm đã được xóa thành công
     header("Location: index.php");
 } else {
     // Xảy ra lỗi khi xóa sản phẩm

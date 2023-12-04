@@ -45,31 +45,31 @@ if ($sql !== null) {
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 ?>
-        <div class="col p-2-4 t-4 m-6">
-            <a class="home-product-item" href="product.php?product_id=<?php echo $row['product_id']; ?>">
-                <div class="home-product-item__img" style="background-image: url(<?php echo $row['image_url']; ?>);">
-                </div>
-                <h4 class="home-product-item__name">
-                    <?php echo $row['product_name']; ?>
-                </h4>
-                <div class="home-product-item__price">
-                    <span class="home-product-item__price-old"><?php echo $row['price'] + 50000; ?>đ</span>
-                    <span class="home-product-item__price-current"><?php echo $row['price']; ?>đ</span>
-                </div>
-
-                <div class="home-product-item__origin">
-                    <span class="home-product-item__brand"><?php echo $row['manufacturer_name']; ?></span>
-                </div>
-                <div class="home-product-item__favorite">
-                    <i class="fas fa-check"></i>
-                    <span>Yêu thích</span>
-                </div>
-                <div class="home-product-item__sale-off">
-                    <span class="home-product-item__sale-off-percent">45%</span>
-                    <span class="home-product-item__sale-off-label">GIẢM</span>
-                </div>
-            </a>
+<div class="col p-2-4 t-4 m-6">
+    <a class="home-product-item" href="product.php?product_id=<?php echo $row['product_id']; ?>">
+        <div class="home-product-item__img" style="background-image: url(<?php echo $row['image_url']; ?>);">
         </div>
+        <h4 class="home-product-item__name">
+            <?php echo $row['product_name']; ?>
+        </h4>
+        <div class="home-product-item__price">
+            <span class="home-product-item__price-old"><?php echo $row['price'] + 50000; ?>đ</span>
+            <span class="home-product-item__price-current"><?php echo $row['price']; ?>đ</span>
+        </div>
+
+        <div class="home-product-item__origin">
+            <span class="home-product-item__brand"><?php echo $row['manufacturer_name']; ?></span>
+        </div>
+        <div class="home-product-item__favorite">
+            <i class="fas fa-check"></i>
+            <span>Yêu thích</span>
+        </div>
+        <div class="home-product-item__sale-off">
+            <span class="home-product-item__sale-off-percent">45%</span>
+            <span class="home-product-item__sale-off-label">GIẢM</span>
+        </div>
+    </a>
+</div>
 <?php
 
     }

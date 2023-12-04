@@ -40,39 +40,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : "";
                 </li>
             </ul>
             <ul class="header__navbar-list">
-                <li class="header__navbar-item header__navber-item--has-notify">
-                    <a href="#" class="header__navbar-item-link">
-                        <i class="header__navbar-icon far fa-bell"></i>
-                        Thông báo
-                    </a>
 
-
-                    <div class="header__notify">
-                        <header class="header__notify-header">
-                            <h3>Thông báo mới nhận</h3>
-                        </header>
-                        <ul class="header__notify-list">
-                            <li class="header__notify-item">
-                                <a href="#" class="header__notify-link">
-                                    <img src="https://cf.shopee.vn/file/aebbec31c262e22639dc6ecc75179b16_tn" alt=""
-                                        class="header__notify-img">
-                                    <div class="header__notify-info">
-                                        <span class="header__notify-name">Mỹ phẩm Ohui chính hãng Mỹ phẩm Ohui
-                                            chính hãng Mỹ phẩm Ohui chính hãng Mỹ phẩm Ohui chính hãng</span>
-                                        <span class="header__notify-descriotion">Mô tả Ohui chính hãng Ohui
-                                            chính hãng Mô tả Ohui chính hãng Ohui chính hãng Mô tả Ohui chính
-                                            hãng Ohui chính hãng</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <footer class="header__notify-footer">
-                            <a href="#" class="header__notify-footer-btn">
-                                Xem tất cả
-                            </a>
-                        </footer>
-                    </div>
-                </li>
                 <li class="header__navbar-item">
                     <a href="report.php" class="header__navbar-item-link">
                         <i class="header__navbar-icon far fa-question-circle"></i>
